@@ -33,7 +33,7 @@ export default function App() {
 
       <View style={styles.items}>
         <FlatList
-          data={myProducts}
+          data={myProducts.reverse()}
           renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
           keyExtractor={(item, index) => index.toString()}
         />
