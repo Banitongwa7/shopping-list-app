@@ -34,9 +34,8 @@ export default function App() {
       <View style={styles.items}>
         <FlatList
           data={myProducts}
-          style={styles.item}
-          renderItem={({ item }) => <Text>{item}</Text>}
-          keyExtractor={item => item}
+          renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
+          keyExtractor={index => index.toString()}
         />
       </View>
     </View>
@@ -66,9 +65,18 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     marginHorizontal: 16,
     borderWidth: 1,
-    borderColor: 'gray',
-    borderRadius: 5,
-    padding: 5,
-    backgroundColor: 'lightgray',
+    padding: 20,
+    fontSize: 18,
+    backgroundColor: '#363062',
+    color: 'white',
+    textAlign: 'center',
+    shadowColor: "gray",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.35,
+    shadowRadius: 3.84,
+    elevation: 5
   }
 });
