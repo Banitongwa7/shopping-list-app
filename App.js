@@ -12,7 +12,7 @@ export default function App() {
   };
 
   const handleSubmit = () => {
-    setMyProducts([...myProducts, product]);
+    setMyProducts( currentMyProducts => [...currentMyProducts, product] );
     setProduct('');
   };
 
@@ -31,11 +31,14 @@ export default function App() {
       />
       </View>
 
-      <FlatList
+      <View style={styles.items}>
+        <FlatList
           data={myProducts}
+          style={styles.item}
           renderItem={({ item }) => <Text>{item}</Text>}
           keyExtractor={item => item}
         />
+      </View>
     </View>
   );
 }
@@ -56,4 +59,16 @@ const styles = StyleSheet.create({
     paddingLeft: 9,
     flexGrow: 1,
   },
+  items: {
+    marginTop: 20,
+  },
+  item:{
+    marginVertical: 8,
+    marginHorizontal: 16,
+    borderWidth: 1,
+    borderColor: 'gray',
+    borderRadius: 5,
+    padding: 5,
+    backgroundColor: 'lightgray',
+  }
 });
