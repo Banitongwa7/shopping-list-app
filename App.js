@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import { Button, FlatList, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { useState } from 'react';
+import { Button, FlatList, StyleSheet, Text, TextInput, View } from 'react-native';
 
 export default function App() {
 
@@ -21,6 +22,7 @@ export default function App() {
       <TextInput
         style={styles.textInput}
         placeholder="Entrez un produit"
+        value={product}
         onChangeText={handleChangeText}
       />
       <Button
@@ -29,13 +31,11 @@ export default function App() {
       />
       </View>
 
-      <ScrollView>
-        <FlatList
+      <FlatList
           data={myProducts}
           renderItem={({ item }) => <Text>{item}</Text>}
           keyExtractor={item => item}
         />
-      </ScrollView>
     </View>
   );
 }
