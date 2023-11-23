@@ -12,7 +12,8 @@ export default function App() {
   };
 
   const handleSubmit = () => {
-    setMyProducts( currentMyProducts => [...currentMyProducts, product] );
+    const idString = Date.now().toString();
+    setMyProducts( currentMyProducts => [{key: idString, name: product},...currentMyProducts] );
     setProduct('');
   };
 
@@ -35,7 +36,7 @@ export default function App() {
         <FlatList
           data={myProducts.reverse()}
           renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
-          keyExtractor={(item, index) => index.toString()}
+          keyExtractor={item => item.key}
         />
       </View>
     </View>
